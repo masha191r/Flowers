@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Новини</title>
+    <link rel="stylesheet" href="news.css">
+
+</head>
+
+<body>
+    <header>
+        <h1>Магазин квітів</h1>
+        <h2>Новини</h2>
+        <hr style="width: 50%;">
+        <nav class="header-links">
+            <a href="index.html" class="icon-link">Головна</a>
+        </nav>
+    </header>
+
+    <div class="news-container">
+        <aside class="news-list" id="newsList"></aside>
+        <main class="news-detail" id="newsDetail">
+            <p>Оберіть новину для перегляду.</p>
+        </main>
+    </div>
+
+    <script src="news.js"></script>
+</body>
+
+</html>
+
+<script>
+    // Імітовані новини
+    const news = [
+        {
+            id: 1,
+            title: "Знижки до Дня матері!",
+            content: "У нашому магазині стартували великі знижки до Дня матері. Поспішайте придбати квіти!",
+            date: "2025-05-07T10:15:00",
+            important: true
+        },
+        {
+            id: 2,
+            title: "Нові сорти троянд у продажу",
+            content: "Ми додали до асортименту понад 10 нових сортів троянд з Голландії.",
+            date: "2025-05-06T18:30:00",
+            important: false
+        },
+        {
+            id: 3,
+            title: "Безкоштовна доставка на вихідних",
+            content: "Усі замовлення, зроблені в суботу та неділю, доставляються безкоштовно!",
+            date: "2025-05-05T09:00:00",
+            important: true
+        }
+    ];
+
+    // Сортування новин за датою спадаючим
+    news.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    const newsList = document.getElementById("newsList");
+    const newsDetail = document.getElementById("newsDetail");
+
+    // Вивід заголовків
+    function renderNewsList() {
+        newsList.innerHTML = "<h3>Останні новини</h3>";
+        news.forEach(item => {
+            const newsDiv = document.createElement("div");
+            newsDiv.className = "news-item" + (item.important ? " important" : "");
+            newsDiv.innerHTML = `
+            <div>${item.title}</div>
+            <time>${formatDate(item.date)}</time>
+        `;
+            newsDiv.addEventListener("click", () => renderNewsDetail(item));
+            newsList.appendChild(newsDiv);
+        });
+    }
+
+    // Вивід вибраної новини
+    function renderNewsDetail(item) {
+        newsDetail.innerHTML = `
+        <div class="news-title">${item.title}</div>
+        <time>${formatDate(item.date)}</time>
+        <div class="news-content">${item.content}</div>
+    `;
+    }
+
+    // Форматування дати
+    function formatDate(dateStr) {
+        const date = new Date(dateStr);
+        return `${date.toLocaleDateString()} ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`;
+    }
+
+    // Ініціалізація
+    renderNewsList();
+
+    </script>

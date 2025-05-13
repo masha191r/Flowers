@@ -1,0 +1,28 @@
+﻿@using System;
+@model Flowers.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Авторизація";
+}
+
+<h2>Увійти до акаунту</h2>
+
+@using (Html.BeginForm("Auth", "Home", FormMethod.Post))
+{
+    <div>
+        <label>Логін</label>
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+    </div>
+
+    <div>
+        <label>Пароль</label>
+        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+    </div>
+    <button type="submit">Війти</button>
+}
+
+<p>
+    Ще не маєте акаунту?
+    <a href="@Url.Action("Register", "Home")" class="register-link">Зареєструватися</a>
+</p>

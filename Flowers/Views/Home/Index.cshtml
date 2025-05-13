@@ -1,0 +1,107 @@
+﻿@using Flowers.Models;
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<main>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Магазин квітів</title>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <div id="jsonData" style="display:none;">
+        @Html.Raw(ViewBag.FlowersJson)
+    </div>
+
+    <header>
+        <h1>Магазин квітів</h1>
+        <div class="filters">
+            <label>Категорія:</label>
+            <select id="categoryFilter"></select>
+
+            <label>Ціна (до):</label>
+            <input type="number" id="priceFilter" placeholder="Введіть ціну">
+
+            <button id="applyFilter">Фільтрувати</button>
+
+            @if (TempData["Contact"] != null)
+            {
+            <button id="cartButton" class="cart-icon" title="Кошик">Кошик</button>
+            }
+            else
+            {
+            <a href="@Url.Action("Auth", "Home")" id="cartButton" class="art-icon auth-button">Кошик</a>
+            }
+
+            <!-- Кнопка входу/реєстрації -->
+            @if (TempData["Contact"] != null)
+            {
+                var contact = TempData["Contact"] as RegisterViewModel;
+                if (contact != null)
+                {
+                    <p>Привіт, @contact.Name</p> <!-- Replace 'Name' with the appropriate property of the Contact object -->
+                }
+            }
+            else
+            {
+                <a href="@Url.Action("Auth", "Home")" class="auth-button">Увійти / Зареєструватися</a>
+            }
+
+        </div>
+        <a href="news.html" title="News">Новини</a>
+    </header>
+
+
+    <main>
+        <div id="gallery" class="gallery">
+        </div>
+    </main>
+    <button id="scrollTopBtn" onclick="scrollToTop()">Вгору</button>
+    <div id="subscriptionModal" class="modal">
+        <p>Підпишіться на наші оновлення!</p>
+        <button id="subscribe">Так</button>
+        <button id="decline">Ні</button>
+    </div>
+
+    <div id="scrollModal" class="scroll-modal">
+        <p>Реклама</p>
+        <button id="closeScrollModal" disabled>
+            Зачекайте: <span id="countdownTimer">5</span> сек.
+        </button>
+    </div>
+    <div id="cartModal" class="modalk" style="display:none;">
+        <div class="modal-content1">
+            <span class="close">&times;</span>
+            <h2>Кошик</h2>
+            <table id="cartTable">
+                <thead>
+                    <tr>
+                        <th data-column="name" data-order="">Назва <span class="sort-arrow"></span></th>
+                        <th data-column="price" data-order="">Ціна <span class="sort-arrow"></span></th>
+                        <th>Кількість</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <button>Оформити замовлення</button>
+            <div class="graph-options">
+                <label>Тип графіка:</label>
+                <select id="graphType">
+                    <option value="pie">Кругова діаграма</option>
+                    <option value="bar">Гістограма</option>
+                    <option value="line">Графік</option>
+                </select>
+                <button id="updateGraph">Оновити графік</button>
+            </div>
+
+            <div id="graphhh">
+                <canvas id="chartCanvas" width="305" height="302"></canvas>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="~/Content/script.js"></script>
+</main>

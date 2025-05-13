@@ -1,0 +1,428 @@
+﻿/* Set padding to keep content from hitting the edges */
+.body-content {
+    margin-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+    transition: .5s;
+}
+
+    a:hover {
+        color: #e0e0e0;
+        padding: 10px;
+        box-shadow: 4px 4px 10px #000;
+        border-radius: 16px;
+        background: violet;
+    }
+
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+
+header {
+    background-color: #ff6b81;
+    color: white;
+    padding: 15px 0;
+    border-bottom: solid purple;
+    box-shadow: 0 4px 35px #333;
+}
+
+/* Фільтри */
+.filters {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+    .filters select,
+    .filters button,
+    #priceFilter {
+        border-radius: 10px;
+        padding: 8px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        transition: 0.4s;
+    }
+
+        .filters select:focus {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+    .filters button {
+        background-color: #ff4757;
+        color: white;
+    }
+
+        .filters button:hover {
+            background-color: #e84118;
+        }
+
+/* Галерея */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Картки */
+.card {
+    width: 220px;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    padding: 10px;
+    transition: 0.6s;
+}
+
+    .card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-bottom: 2px solid #ff6b81;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+    }
+
+    /* Опис */
+    .card .description {
+        display: none;
+        padding: 10px;
+    }
+
+    .card.active .description {
+        display: block;
+    }
+
+/* Ціна */
+.price {
+    font-weight: bold;
+    color: #ff4757;
+    font-size: 18px;
+}
+
+/* Модальні вікна */
+.modal {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    display: none;
+    border-radius: 10px;
+}
+
+    .modal button {
+        margin: 5px;
+        padding: 10px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+/* Кнопка "Назад" */
+#back {
+    border-radius: 10px;
+    border: none;
+    padding: 7px 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+    #back:hover {
+        color: #f8f8f8;
+        background: #333;
+    }
+
+/* Підписка */
+#subscribe {
+    background-color: #2ed573;
+    color: white;
+}
+
+#decline {
+    background-color: #ff4757;
+    color: white;
+}
+
+/* Рекламне вікно */
+/* Реклама не вставлена , а стилі є */
+#adModal {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+#closeAd {
+    padding: 10px;
+    border: none;
+    background: #ff4757;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    #closeAd:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+/* Сторінка продукту */
+.product-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+}
+
+    .product-details img {
+        width: 300px;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+body {
+    height: 2000px;
+    font-family: Arial, sans-serif;
+}
+
+.scroll-modal {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #fff;
+    padding: 16px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    display: none;
+    z-index: 9999;
+    width: 280px;
+    font-size: 14px;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.scroll-modal p {
+    margin: 0 0 10px;
+}
+
+.scroll-modal button {
+    padding: 8px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ccc;
+    color: #333;
+    cursor: not-allowed;
+    width: 100%;
+}
+
+    .scroll-modal button.enabled {
+        background-color: #e74c3c;
+        color: #fff;
+        cursor: pointer;
+    }
+
+.filters {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.cart-icon {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+
+.modal-content {
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 500px;
+    width: 90%;
+}
+
+.close {
+    float: right;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* блок сортування*/
+.sort-arrow {
+    font-size: 0.8em;
+    margin-left: 5px;
+}
+
+#scrollTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    background-color: #cc37bb;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+    #scrollTopBtn:hover {
+        background-color: #5b1261;
+    }
+
+/* кошик */
+.modalk {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    padding: 20px;
+}
+
+.modal-content1 {
+    background-color: #fff;
+    margin: auto;
+    padding: 20px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 800px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    font-family: 'Arial', sans-serif;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+    }
+
+h2 {
+    margin-top: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+#cartTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+    #cartTable th,
+    #cartTable td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    #cartTable th {
+        background-color: #f9f9f9;
+        font-weight: bold;
+    }
+
+    #cartTable input[type="number"] {
+        width: 60px;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+    }
+
+button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+    button:hover {
+        background-color: #c0392b;
+    }
+
+.summary-row td {
+    font-weight: bold;
+    background-color: #f2f2f2;
+}
+
+#chartCanvas {
+    max-width: 300px;
+    max-height: 300px;
+}
+
+#graphhh {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+}
